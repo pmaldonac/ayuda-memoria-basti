@@ -10,16 +10,23 @@ import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { ThemeProvider } from '@mui/material/styles'
-import TablePagination from '@mui/material/TablePagination';
-import * as FIcons from 'react-icons/fi'
 import IconButton from '@mui/material/IconButton';
 import { styled } from '@mui/system';
+import { makeStyles } from '@material-ui/core/styles';
 import TablePaginationUnstyled, {
   tablePaginationUnstyledClasses as classes,
 } from '@mui/base/TablePaginationUnstyled';
 
-import {customTheme, Container, HeaderCell, HeaderRow, BodyCell, StyledRow, ReportCell, Button} from '../styles/styleTable'
+import {customTheme, Container, HeaderCell, HeaderRow, BodyCell, StyledRow, ReportCell} from '../styles/styleTable'
 
+
+const useRowStyles = makeStyles({
+  root: {
+    '& > *': {
+      borderBottom: 'unset',
+    },
+  },
+});
 
 const CustomTablePagination = styled(TablePaginationUnstyled)(
   ({ theme }) => `
@@ -98,21 +105,23 @@ const CustomTablePagination = styled(TablePaginationUnstyled)(
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
-
+  const classes = useRowStyles()
+  
 
   return (
     <React.Fragment>
-      <StyledRow>
+      <StyledRow className='classes'>
         <BodyCell>
         <IconButton
             aria-label="expand row"
             size="small"
             onClick={() => setOpen(!open)}
-          >
+            
+            >
             {open ? <KeyboardArrowUpIcon style={{backgroundColor: 'transparent'}}/> : <KeyboardArrowDownIcon style={{backgroundColor: 'transparent'}}/>}
           </IconButton>
          </BodyCell>
-        <BodyCell component="th">
+        <BodyCell>
           {row.index}
         </BodyCell>
         <BodyCell >{row.KEY}</BodyCell>

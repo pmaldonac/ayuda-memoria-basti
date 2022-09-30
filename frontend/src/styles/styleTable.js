@@ -1,10 +1,8 @@
 import TableRow from '@mui/material/TableRow'
 import TableCell from '@mui/material/TableCell';
-import { purple } from '@mui/material/colors';
 import { styled, createTheme } from '@mui/material/styles'
 import { TableContainer } from '@mui/material';
-import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
+
 
 export const customTheme = createTheme({
     palette: {
@@ -23,7 +21,8 @@ export const customTheme = createTheme({
       white:{
         main: '#ffffff'
       }
-    },
+    }
+
   });
 
 
