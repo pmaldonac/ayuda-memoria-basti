@@ -2,8 +2,13 @@ const koa = require('koa')
 const bodyParser = require('koa-body')
 const router = require('./routes/index')
 const cors = require('koa2-cors')
+const data = require('./actions/orderPatients')
 
 
+
+
+console.log(data.getPatientsFiltered())
+/*
 const app = new koa()
 const port = 4000
 
@@ -14,3 +19,4 @@ app.use(router.routes())
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`)
 })
+ */
